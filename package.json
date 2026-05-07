@@ -1,0 +1,25 @@
+{
+  "name": "ai-security-review-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Remote MCP server that delivers the AI Integration Lead pre-launch security review skill to any LLM client.",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "npm run sync-content && wrangler dev",
+    "deploy": "npm run sync-content && wrangler deploy",
+    "typecheck": "npm run sync-content && tsc --noEmit",
+    "copy-content": "cp ../Dashboard/Artifacts/Security/SKILL_ai_integration_lead.md content/ && cp ../Dashboard/Artifacts/Security/AI_SECURITY_CHECKLIST.md content/",
+    "sync-content": "node scripts/sync-content.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "agents": "^0.0.95",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250109.0",
+    "typescript": "^5.7.2",
+    "wrangler": "^3.99.0"
+  }
+}
